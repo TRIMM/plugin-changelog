@@ -31,7 +31,7 @@ export const MarkdownCard = ({}) => {
                 components={{ 
                     a: ({node, ...props}) => <a style={{color: '#9CC9FF'}} {...props} />,
                 }}
-            >
-            </ReactMarkdown></InfoCard>
+            />
+            </InfoCard>
     }    
 }
