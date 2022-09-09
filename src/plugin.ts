@@ -7,6 +7,7 @@ import {
   discoveryApiRef,
 } from '@backstage/core-plugin-api';
 import { ChangelogApiRef, ChangelogStubClient } from './api';
+import React from 'react';
 
 export const rootRouteRef = createRouteRef({
   id: 'Changelog',
@@ -16,7 +17,7 @@ export const changelogPlugin = createPlugin({
   id: 'Changelog',
   apis: [
     createApiFactory({
-      api: ChangelogApiRef,
+      api: ChangelogApiRef, 
       deps: { configApi: configApiRef, discoveryApi: discoveryApiRef },
       factory: ({ discoveryApi }) => 
         new ChangelogStubClient({
@@ -35,3 +36,21 @@ export const EntityChangelogCard = changelogPlugin.provide(
     }
   })
 );
+export const EntityChangelogContent = changelogPlugin.provide(
+  createRoutableExtension({
+    name: 'EntityChangelogContent',
+    mountPoint: rootRouteRef,
+    component: () => 
+    import('./components/widgets').then(
+      ({ MarkdownCard }) => {
+        const ChangelogPage = (props: ChangelogPageProps) => {          
+          return (
+            <MarkdownCard
+            />
+          );
+        };
+        return ChangelogPage;
+      },
+    ),    
+  })
+)
