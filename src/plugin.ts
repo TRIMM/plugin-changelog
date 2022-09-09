@@ -1,19 +1,37 @@
-import { createPlugin, createRoutableExtension } from '@backstage/core-plugin-api';
 
-import { rootRouteRef } from './routes';
+import {  createComponentExtension, createPlugin, createRoutableExtension } from '@backstage/core-plugin-api';
+import {
+  configApiRef,
+  createApiFactory,
+  createRouteRef,
+  discoveryApiRef,
+} from '@backstage/core-plugin-api';
+import { ChangelogApiRef, ChangelogStubClient } from './api';
 
-export const changelogPlugin = createPlugin({
-  id: 'changelog',
-  routes: {
-    root: rootRouteRef,
-  },
+export const rootRouteRef = createRouteRef({
+  id: 'Changelog',
 });
 
-export const ChangelogPage = changelogPlugin.provide(
-  createRoutableExtension({
-    name: 'ChangelogPage',
-    component: () =>
-      import('./components/ExampleComponent').then(m => m.ExampleComponent),
-    mountPoint: rootRouteRef,
-  }),
+export const changelogPlugin = createPlugin({
+  id: 'Changelog',
+  apis: [
+    createApiFactory({
+      api: ChangelogApiRef,
+      deps: { configApi: configApiRef, discoveryApi: discoveryApiRef },
+      factory: ({ discoveryApi }) => 
+        new ChangelogStubClient({
+          discoveryApi
+        })              
+    }),
+  ],
+});
+
+export const EntityChangelogCard = changelogPlugin.provide(
+  createComponentExtension({
+    name: 'EntityChangelogCard',
+    component: {
+      lazy: () => 
+        import('./components/widgets/index').then((m)=> m.MarkdownCard)
+    }
+  })
 );

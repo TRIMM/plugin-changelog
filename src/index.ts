@@ -1,1 +1,1 @@
-export { changelogPlugin, ChangelogPage } from './plugin';
+export { EntityChangelogCard } from './plugin';
