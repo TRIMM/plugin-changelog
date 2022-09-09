@@ -35,3 +35,21 @@ export const EntityChangelogCard = changelogPlugin.provide(
     }
   })
 );
+export const EntityChangelogContent = changelogPlugin.provide(
+  createRoutableExtension({
+    name: 'EntityChangelogContent',
+    mountPoint: rootRouteRef,
+    component: () => 
+    import('./components/widgets').then(
+      ({ MarkdownCard }) => {
+        const ChangelogPage = (props: ChangelogPageProps) => {          
+          return (
+            <MarkdownCard
+            />
+          );
+        };
+        return ChangelogPage;
+      },
+    ),    
+  })
+)
