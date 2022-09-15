@@ -1,5 +1,6 @@
 import { DiscoveryApi } from '@backstage/core-plugin-api';
 import { ChangelogApi } from './ChangelogApi';
+import { Entity } from '@backstage/catalog-model';
 
 export class ChangelogStubClient implements ChangelogApi {
 
@@ -9,7 +10,7 @@ export class ChangelogStubClient implements ChangelogApi {
         this.discoveryApi = discoveryApi;
     }
 
-    async getChangelogContents(): Promise<string | undefined> {
+    async getChangelogContents(entity: Entity): Promise<string | undefined> {
         const file = require('../../test.md');
         let test_markdown = await fetch(file).then((r)=>r.text());
         return test_markdown;
