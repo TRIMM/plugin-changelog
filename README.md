@@ -1,13 +1,39 @@
-# changelog
+# Changelog plugin
+Thanks for using our plugin created for showing changelog information in Backstage. This plugin is still in development.
 
-Welcome to the changelog plugin!
+Note: currently it is only possible to direct-link to a markdown file.
+Pulling this from a repo is planned to add.
 
-_This plugin was created through the Backstage CLI_
+## Installation
+Run this command from the `app` package directory:
+```shell
+yarn add @trimm/plugin-changelog
+```
 
-## Getting started
+## Configuration
 
-Your plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/changelog](http://localhost:3000/changelog).
+### Add cards to overview tab
+```tsx
+// packages\app\src\components\catalog\EntityPage.tsx
+import { EntityChangelogCard, EntityChangelogContent } from '@trimm/plugin-changelog';
 
-You can also serve the plugin in isolation by running `yarn start` in the plugin directory.
-This method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.
-It is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.
+// In the overviewContent.
+
+// Changelog card
+<Grid item md={12}>
+    <EntityChangelogCard></EntityChangelogCard>
+</Grid>
+```
+
+### Add to catalog-info.yaml (direct-linking is currently the only way)
+```yaml
+# Example catalog-info.yaml entity definition file
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  # ...
+  annotations:
+    changelog/source: 'direct'
+    changelog/directlink: '<DIRECT LINK TO YOUR CHANGELOG.md>'
+
+```
