@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/TRIMM/plugin-changelog/compare/v0.1.1...v0.1.2) (2022-09-16)
+
+
+### Features
+
+* Added Entityswitch ([#19](https://github.com/TRIMM/plugin-changelog/issues/19)) ([b41688d](https://github.com/TRIMM/plugin-changelog/commit/b41688d8a6f63c0706cea0df3d139d7678d40f7d))
+
+
+* **deps-dev:** Bump @types/jest from 29.0.2 to 29.0.3 ([19779bd](https://github.com/TRIMM/plugin-changelog/commit/19779bd702baa0c6ec656f91776a06184050c349))
+* **deps-dev:** Bump msw from 0.47.2 to 0.47.3 ([a3f587f](https://github.com/TRIMM/plugin-changelog/commit/a3f587f4eeec03fc485ea8265daab3f3932368ac))
+
 ### 0.1.1 (2022-09-15)
 
 
