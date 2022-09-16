@@ -1,0 +1,1 @@
+export { isChangelogAvailable } from './isChangelogAvailable';
