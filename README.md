@@ -20,9 +20,13 @@ import { EntityChangelogCard, EntityChangelogContent } from '@trimm/plugin-chang
 // In the overviewContent.
 
 // Changelog card
-<Grid item md={12}>
-    <EntityChangelogCard></EntityChangelogCard>
-</Grid>
+<EntitySwitch>
+    <EntitySwitch.Case if={isChangelogAvailable}>
+        <Grid item md={12}>
+            <EntityChangelogCard></EntityChangelogCard>
+        </Grid>
+    </EntitySwitch.Case>
+</EntitySwitch>
 ```
 
 ### Add to catalog-info.yaml (direct-linking is currently the only way)
